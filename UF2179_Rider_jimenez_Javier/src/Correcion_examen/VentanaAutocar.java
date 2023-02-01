@@ -1,4 +1,4 @@
-package Ejercicio2;
+package Correcion_examen;
 
 import java.awt.Component;
 import java.awt.EventQueue;
@@ -42,6 +42,7 @@ public class VentanaAutocar extends JFrame {
 	
 	private JTextArea textAreaResultado;
 	private JTable tablaAutocar;
+	// Creas la lista, pero no la incializas
 	private List<Autocar> listaAutocares;
 	private JButton btnInsertar;
 	private JButton btnMostrar;
@@ -68,8 +69,13 @@ public class VentanaAutocar extends JFrame {
 	@SuppressWarnings("serial")
 	public VentanaAutocar() {
 		
+		
+		
 		this.listaAutocares = new ArrayList<Autocar>();
-
+		
+		
+		
+		
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -173,16 +179,19 @@ public class VentanaAutocar extends JFrame {
 
 	protected void insertar() {
 	
+		// no haces ninguna validación de datos
 		String matricula = textMatricula.getText();
 		String marca = textMarca.getText();
 		String modelo = textModelo.getText();
 		
+		// no controlas que los números sean correcto o estén limitados a 80 por ejemplo
 		int km = Integer.parseInt(textKm.getText());
 		int num_plazas = Integer.parseInt(textPlazas.getText());
 
 		
 		Autocar a = new Autocar(matricula, marca , modelo, km, num_plazas);
 		
+		// no funciona porque la lista no está inicilizada
 		if (!listaAutocares.contains(a)) {
 			listaAutocares.add(a);
 		}
@@ -196,7 +205,7 @@ public class VentanaAutocar extends JFrame {
 protected void mostrarDatos() {
 
 	DefaultTableModel listaAutocar  = (DefaultTableModel) 					tablaAutocar.getModel();
-
+	// no funciona porque la lista no está incializada
 	listaAutocar.setRowCount(0);
 	for (Autocar autocar : listaAutocares ) {
 
